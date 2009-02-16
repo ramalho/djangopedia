@@ -1,6 +1,6 @@
 from django.contrib import admin, databrowse, auth
 from lab import app1
-1/0
+
 admin.site.register(app1.models.EmptyModel)
 admin.site.register(app1.models.OneFieldModel)
 

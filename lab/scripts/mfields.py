@@ -11,6 +11,17 @@ import settings
 setup_environ(settings)
 #### /boilerplate
 
-from lab.app1.models import EmptyModel
+from django.db import models
+from django.db.models.fields import Field
 
-print dir(EmptyModel)
+from inspect import getmembers, isclass, getclasstree
+
+for name, klass in getmembers(models.fields, isclass):
+    isField = issubclass(klass, models.fields.Field)
+    print ' +'[isField], name
+        
+field_types = [c for n,c in getmembers(models.fields, isclass) if issubclass(c,Field)]
+tree = getclasstree(field_types)
+for item in tree:
+    print item
+    
